@@ -12,7 +12,7 @@ export default function NabBar() {
   ];
 
   const [theme, setTheme] = useState("dark");
-
+const root = document.documentElement;
   useEffect(() => {
     if (theme === "dark"){
       root.classList.add("dark");
