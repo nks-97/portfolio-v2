@@ -1,33 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-  --color-bg: #fff7ed;
+  --color-bg: #faf8f0;
   --color-bg-soft: #ffffff;
-  --color-text: #171717;
-  --color-muted: rgba(23, 23, 23, 0.65);
-  --color-card: rgba(255, 255, 255, 0.75);
-  --color-border: rgba(0, 0, 0, 0.1);
+  --color-text: #172019;
+  --color-muted: rgba(23, 32, 25, 0.62);
+  --color-card: rgba(255, 255, 255, 0.76);
+  --color-border: rgba(23, 32, 25, 0.1);
 
-  --color-accent: #f97316;
-  --color-accent-hover: #fb923c;
-  --color-accent-soft: rgba(249, 115, 22, 0.25);
+  --color-accent: #2f6f4e;
+  --color-accent-hover: #25583e;
+  --color-accent-soft: rgba(47, 111, 78, 0.15);
 }
 
 .dark {
-  --color-bg: #050505;
-  --color-bg-soft: #0f0f0f;
-  --color-text: #ffffff;
-  --color-muted: rgba(255, 255, 255, 0.65);
-  --color-card: rgba(255, 255, 255, 0.06);
+  --color-bg: #050a07;
+  --color-bg-soft: #0f1a13;
+  --color-text: #faf8f0;
+  --color-muted: rgba(250, 248, 240, 0.62);
+  --color-card: rgba(255, 255, 255, 0.055);
   --color-border: rgba(255, 255, 255, 0.1);
 
-  --color-accent: #f97316;
-  --color-accent-hover: #fb923c;
-  --color-accent-soft: rgba(249, 115, 22, 0.45);
+  --color-accent: #86d39f;
+  --color-accent-hover: #a8e6bb;
+  --color-accent-soft: rgba(134, 211, 159, 0.16);
 }
 
 html {
@@ -38,14 +38,14 @@ body {
   margin: 0;
   background: var(--color-bg);
   color: var(--color-text);
-   font-family: "Space Grotesk", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 .app-bg {
+  min-height: 100vh;
   background:
-    radial-gradient(circle at 50% -10%, rgba(249, 115, 22, 0.38), transparent 36%),
-    radial-gradient(circle at 50% 120%, rgba(249, 115, 22, 0.16), transparent 35%),
-    var(--color-bg);
+    radial-gradient(circle at 20% 0%, var(--color-accent-soft), transparent 32%),
+    radial-gradient(circle at 85% 20%, rgba(107, 114, 128, 0.1), transparent 30%),
+    radial-gradient(circle at 50% 115%, rgba(23, 32, 25, 0.07), transparent 38%),
+    linear-gradient(180deg, var(--color-bg-soft), var(--color-bg));
 }
-
-

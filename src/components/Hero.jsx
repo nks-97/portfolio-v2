@@ -1,4 +1,4 @@
-import { Mouse } from 'lucide-react';
+import { Mouse } from "lucide-react";
 export default function Hero() {
   return (
     <section className="min-h-screen flex w-full px-24 py-10 relative">
@@ -21,19 +21,19 @@ export default function Hero() {
             using React, Supabase, and more modern web technologies.
           </p>
           <div className="flex gap-4">
-            <button className="bg-[var(--color-accent)] p-4 rounded-xl text-[var(--color-text)]">
+            <button className="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] p-4 rounded-xl text-white">
               View My Work
             </button>
-            <button className="border border-[var(--color-accent)] p-4 rounded-xl text-[var(--color-accent)]">
+            <button className="border border-[var(--color-accent)] hover:border-[var(--color-accent-hover)] p-4 rounded-xl text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">
               Contact Me
             </button>
           </div>
         </div>
       </div>
       <div className=" flex-1"></div>
-      <div className='absolute bottom-4 left-1/2 -translate-x-1/2 text-[var(--color-text)] flex  flex-col items-center'>
-        <Mouse className='animate-bounce'/>
-        <p className='text-[10px]'>scroll to explore</p>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[var(--color-text)] flex  flex-col items-center">
+        <Mouse className="animate-bounce" />
+        <p className="text-[10px]">scroll to explore</p>
       </div>
     </section>
   );

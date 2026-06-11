@@ -1,6 +1,6 @@
 import Hero from "./components/Hero";
 import NavBar from "./components/NavBar";
-import { MoveRight } from "lucide-react";
+
 
 export default function App() {
   return (
