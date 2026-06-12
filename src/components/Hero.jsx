@@ -40,9 +40,12 @@ export default function Hero({ isScrolled }) {
       },
     },
   };
-
+// px-24 py-10
   return (
-    <section className="min-h-screen flex w-full px-24 py-10 relative">
+    <section className="min-h-dvh w-full  relative 
+                        flex flex-col lg:flex-row
+                        px-6 sm:px-10 md:px-16 lg:px-24
+    ">
       <div className="flex-1 flex flex-col justify-center items-center">
         <motion.div
           variants={divMotion}
@@ -51,21 +54,21 @@ export default function Hero({ isScrolled }) {
         >
           <motion.p
             variants={textMotion}
-            className="text-4xl font-semibold"
+            className="text-3xl xl:text-4xl font-semibold"
           >
             Niko <span className="text-[var(--color-accent)]">Sarmiento</span>
           </motion.p>
 
           <motion.p
             variants={textMotion}
-            className="text-xl font-thin tracking-[0.05em] mb-10"
+            className="text-sm xl:text-xl font-thin tracking-[0.05em] mb-10"
           >
             IT Specialist {" \u2192 "} Fullstack{" "}
           </motion.p>
 
           <motion.h1
             variants={textMotion}
-            className="text-6xl leading-[1.05] tracking-tight mb-4"
+            className="text-4xl xl:text-6xl leading-[1.05] tracking-tight mb-4"
           >
             Turning complex workflow into{" "}
             <span className="text-[var(--color-accent-hover)]">
@@ -75,7 +78,7 @@ export default function Hero({ isScrolled }) {
 
           <motion.p
             variants={textMotion}
-            className="mb-10 tracking-tight font-extralight"
+            className="mb-10 tracking-tight font-extralight text-sm sm:text-base md:text-lg"
           >
             I develop internal tools, configurators, and data-driven systems
             using React, Supabase, and more modern web technologies.
@@ -100,7 +103,7 @@ export default function Hero({ isScrolled }) {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-        className="flex-1"
+        className="flex-1 hidden md:flex"
       ></motion.div>
 
       <motion.div
@@ -112,7 +115,9 @@ export default function Hero({ isScrolled }) {
           duration: 0.3,
           ease: "easeInOut",
         }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[var(--color-text)] flex flex-col items-center"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[var(--color-text)] flex-col items-center
+                    hidden md:flex
+        "
       >
         <Mouse className="animate-bounce" />
         <p className="text-[10px]">scroll to explore</p>
