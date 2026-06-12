@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import logo from "../assets/NKS.png";
 import logoWhite from "../assets/NKSW.png";
 import { Sun, Moon } from "lucide-react";
-export default function NabBar() {
+export default function NabBar({isScrolled}) {
   const navList = [
     { name: "Home", link: "home" },
     { name: "Projects", link: "projects" },
@@ -28,7 +28,13 @@ const root = document.documentElement;
   }
 
   return (
-    <div className="fixed w-full h-40 flex justify-between items-center px-48 z-40">
+    <div className={`
+                      fixed w-full flex justify-between items-center px-48 z-40
+                      transition-all duration-300 ease-in-out
+                      ${isScrolled ? 
+                        "h-20 backdrop-blur-md " 
+                        : "h-48"}
+    `}>
       {
         theme === "dark" ? (<img src={logoWhite} alt="NKS" className="h-[20px]" />) : (<img src={logo} alt="NKS" className="h-[20px]" />)
       }
