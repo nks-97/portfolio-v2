@@ -1,37 +1,37 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Database, Server, Monitor } from "lucide-react";
+import { ArrowUpRight, Code2, Database, Workflow } from "lucide-react";
 
-const projects = [
+const aboutCards = [
   {
-    title: "Purchase Order Tracker",
-    type: "Internal Business System",
+    title: "Frontend Development",
+    type: "React Interface",
     description:
-      "A full workflow tracker for store requests, approvals, stock checking, logistics, and delivery monitoring.",
-    tech: ["Power Apps", "Dataverse", "SAP B1", "Power Automate"],
-    status: "Production",
-    icon: Server,
+      "I build clean, responsive, and interactive web interfaces using React, Tailwind, and Framer Motion with focus on usability and modern design.",
+    tech: ["React", "Tailwind", "Framer Motion"],
+    status: "Building",
+    icon: Code2,
   },
   {
-    title: "Product Management System",
-    type: "React + Supabase App",
+    title: "Backend & Databases",
+    type: "Data-Driven Systems",
     description:
-      "A product interface with image gallery, item details, admin upload, and database-connected product records.",
-    tech: ["React", "Supabase", "Embla", "Tailwind"],
-    status: "In Progress",
+      "I work with backend-connected applications using databases, APIs, Supabase, SQL, and structured data for real business workflows.",
+    tech: ["Supabase", "SQL", "API", "Database"],
+    status: "Learning",
     icon: Database,
   },
   {
-    title: "Portfolio Website",
-    type: "Frontend Showcase",
+    title: "Business Workflow Systems",
+    type: "Internal Tools",
     description:
-      "A modern personal portfolio with animated hero section, intro loader, responsive layout, and project showcase.",
-    tech: ["React", "Framer Motion", "Tailwind"],
-    status: "Building",
-    icon: Monitor,
+      "I create systems that support real company operations such as purchase tracking, approvals, product records, and process monitoring.",
+    tech: ["Power Apps", "Dataverse", "SAP B1", "Automation"],
+    status: "Production",
+    icon: Workflow,
   },
 ];
 
-export default function Project() {
+export default function About() {
   const containerMotion = {
     hidden: {},
     show: {
@@ -58,26 +58,26 @@ export default function Project() {
 
   return (
     <section
-      id="projects"
+      id="about"
       className="relative min-h-screen w-full px-6 py-24 sm:px-10 lg:px-24"
     >
-      <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-14 max-w-3xl">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-[var(--color-accent)]">
-            Selected Work
+          <p className="mb-2 text-xs font-medium uppercase tracking-[0.35em] text-[var(--color-accent)]">
+            About Me
           </p>
 
-          <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Projects built around real workflows.
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+            I build practical systems for real workflows.
           </h2>
 
           <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--color-text)]/70 sm:text-lg">
-            A collection of systems, interfaces, and tools focused on solving
-            operational problems using frontend, backend, APIs, and databases.
+            I am an IT Specialist and aspiring full-stack developer focused on
+            creating web applications, internal tools, and database-driven
+            systems that help simplify business operations.
           </p>
-        </div>
-
+        </div>      
+      <div className="mx-auto max-w-7xl">
         {/* Cards */}
         <motion.div
           variants={containerMotion}
@@ -86,12 +86,12 @@ export default function Project() {
           viewport={{ once: true, amount: 0.2 }}
           className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
         >
-          {projects.map((project) => {
-            const Icon = project.icon;
+          {aboutCards.map((item) => {
+            const Icon = item.icon;
 
             return (
               <motion.article
-                key={project.title}
+                key={item.title}
                 variants={cardMotion}
                 whileHover={{
                   y: -8,
@@ -115,36 +115,36 @@ export default function Project() {
 
                   <div className="mb-4">
                     <p className="mb-2 text-sm text-[var(--color-text)]/50">
-                      {project.type}
+                      {item.type}
                     </p>
 
                     <h3 className="text-2xl font-semibold tracking-tight">
-                      {project.title}
+                      {item.title}
                     </h3>
                   </div>
 
                   <p className="mb-8 leading-7 text-[var(--color-text)]/65">
-                    {project.description}
+                    {item.description}
                   </p>
 
                   <div className="mb-6 flex flex-wrap gap-2">
-                    {project.tech.map((item) => (
+                    {item.tech.map((tech) => (
                       <span
-                        key={item}
+                        key={tech}
                         className="rounded-full border border-[var(--color-text)]/10 px-3 py-1 text-xs text-[var(--color-text)]/70"
                       >
-                        {item}
+                        {tech}
                       </span>
                     ))}
                   </div>
 
                   <div className="flex items-center justify-between border-t border-[var(--color-text)]/10 pt-5">
                     <span className="text-sm text-[var(--color-text)]/50">
-                      Status
+                      Focus
                     </span>
 
                     <span className="rounded-full bg-[var(--color-accent)]/15 px-3 py-1 text-sm font-medium text-[var(--color-accent)]">
-                      {project.status}
+                      {item.status}
                     </span>
                   </div>
                 </div>

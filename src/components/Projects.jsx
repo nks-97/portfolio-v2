@@ -1,60 +1,51 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-import interactiveImg from "../../public/projects/interactive.png";
+import interactiveImg from "../../public/projects/interactive/interactive.png";
+import interactiveShowCase from "../../public/projects/interactive/interactive-showcase.png"
+
+import configuratorImg from "../../public/projects/configurator/configurator.png";
+import configuratorShowCase from "../../public/projects/configurator/configurator-showcase.png"
+
+import potrackerImg from "../../public/projects/potracker/potracker.png";
+import potrackerShowCase from "../../public/projects/potracker/potracker-showcase.png"
 
 export default function Projects() {
   const projectList = [
     {
-      id: 1,
-      number: "01",
-      title: "Interactive Product Gallery",
-      category: "React Interface",
-      description:
-        "A responsive product gallery with image preview, thumbnails, and smooth user interaction.",
-      image: interactiveImg,
-      tech: ["React", "Tailwind", "Framer Motion"],
-    },
-    {
-      id: 2,
-      number: "02",
-      title: "PO Tracker System",
-      category: "Business Workflow",
-      description:
-        "A purchase order tracking system designed for store requests, approvals, logistics, and delivery monitoring.",
-      image: interactiveImg,
-      tech: ["Power Apps", "Dataverse", "SAP B1"],
-    },
-    {
-      id: 3,
-      number: "03",
-      title: "Product Database App",
-      category: "Fullstack App",
-      description:
-        "A database-connected product system with API, item details, images, and admin management.",
-      image: interactiveImg,
-      tech: ["React", "Supabase", "SQL"],
-    },
-    {
-      id: 4,
-      number: "04",
-      title: "Sales Dashboard",
-      category: "Data System",
-      description:
-        "A reporting dashboard for sales, inventory, and branch-level business performance.",
-      image: interactiveImg,
-      tech: ["Python", "SQL", "Power BI"],
-    },
-    {
-      id: 5,
-      number: "05",
-      title: "Portfolio Website",
-      category: "Frontend Showcase",
-      description:
-        "A modern animated portfolio with intro loader, hero animation, and horizontal project showcase.",
-      image: interactiveImg,
-      tech: ["React", "Framer Motion", "Tailwind"],
-    },
+  id: 3,
+  number: "01",
+  title: "Ilaw Configurator",
+  imageBg: configuratorImg,
+  imageShow: configuratorShowCase,
+  category: "3D Product Configurator",
+  description:
+    "An interactive 3D configurator for lighting products where users can preview, customize, and explore product options in a more visual and engaging way.",
+  tech: ["React", "Three.js", "React Three Fiber"],
+},
+{
+  id: 2,
+  number: "02",
+  title: "Interactive Catalogue",
+  imageBg: interactiveImg,
+  imageShow: interactiveShowCase,
+  category: "Product Catalogue & Quotation System",
+  description:
+    "A secure web-based catalogue for lighting and electrical products, allowing users to browse product images, view technical details, and create quotations through their own accounts. Built with account-based access to keep quotation records organized and protected.",
+  tech: ["React", "Tailwind CSS", "Supabase", "Framer Motion"]
+},
+{
+  id: 3,
+  number: "03",
+  title: "Purchase Order Tracker",
+  imageBg: potrackerImg,
+  imageShow: potrackerShowCase,
+  category: "Internal Workflow System",
+  description:
+    "A web-based internal tracking system for managing purchase order requests, approvals, item status, and department updates, helping stores and internal teams monitor PO progress in one centralized platform.",
+  tech: ["HTML", "CSS", "JavaScript", "MySQL"],
+},
+  
   ];
 
   const sectionRef = useRef(null);
@@ -79,31 +70,26 @@ export default function Projects() {
 
   // Background parallax movement
   const bgX = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
   const smoothBgX = useSpring(bgX, {
     stiffness: 50,
     damping: 30,
     mass: 0.5,
   });
 
-  // Floating text parallax
+  // Floating text / side image parallax
   const textY = useTransform(scrollYProgress, [0, 1], ["40px", "-40px"]);
 
-  // const smoothTextY = useSpring(textY, {
-  //   stiffness: 70,
-  //   damping: 28,
-  //   mass: 0.4,
-  // });
-
   const smoothTextY = useSpring(textY, {
-  stiffness: 120,
-  damping: 30,
-  mass: 0.25,
-});
+    stiffness: 120,
+    damping: 30,
+    mass: 0.25,
+  });
 
   return (
     <section
       ref={sectionRef}
-      style={{ height: `${projectList.length * 100}vh` }}
+      style={{ height: `${projectList.length * 150}vh` }}
       className="relative z-20 bg-[var(--color-bg-soft)] text-[var(--color-text)]"
     >
       <div className="sticky top-0 h-screen overflow-hidden">
@@ -127,7 +113,7 @@ export default function Projects() {
             >
               {/* BACK IMAGE */}
               <motion.img
-                src={project.image}
+                src={project.imageBg}
                 alt={project.title}
                 style={{ x: smoothBgX }}
                 className="absolute inset-0 z-0 h-full w-[120%] max-w-none object-cover"
@@ -141,11 +127,6 @@ export default function Projects() {
 
               {/* SOFT ACCENT GLOW */}
               <div className="absolute bottom-[-20%] right-[-10%] z-10 h-[500px] w-[500px] rounded-full bg-[var(--color-accent)]/20 blur-[120px]" />
-
-              {/* BIG BACKGROUND NUMBER */}
-              <p className="absolute bottom-8 right-8 z-10 text-[9rem] font-bold leading-none text-white/5 sm:text-[13rem] lg:text-[18rem]">
-                {project.number}
-              </p>
 
               {/* FRONT CONTENT */}
               <div className="relative z-30 flex h-full items-center px-6 pt-24 sm:px-10 lg:px-24">
@@ -186,14 +167,19 @@ export default function Projects() {
                 </motion.div>
               </div>
 
+              {/* SIDE MOCKUP IMAGE */}
+<div className="pointer-events-none absolute right-[8%] top-1/2 z-30 hidden w-[48vw] max-w-[820px] -translate-y-1/2 lg:block">
+  <motion.img
+    src={project.imageShow}
+    alt={`${project.title} mockup`}
+    style={{ y: smoothTextY }}
+    className="w-full object-contain drop-shadow-[0_35px_90px_rgba(0,0,0,0.65)]"
+  />
+</div>
+
               {/* BOTTOM PROGRESS */}
               <div className="absolute bottom-8 left-6 right-6 z-40 sm:left-10 sm:right-10 lg:left-24 lg:right-24">
-                <div className="mb-4 flex items-center justify-between text-sm text-white/50">
-                  <span>Scroll to explore</span>
-                  <span>
-                    {index + 1} / {projectList.length}
-                  </span>
-                </div>
+                <div className="mb-4 flex items-center justify-between text-sm text-white/50"></div>
 
                 <div className="h-px w-full overflow-hidden bg-white/15">
                   <motion.div

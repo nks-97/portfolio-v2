@@ -3,6 +3,7 @@ import IntroLoader from "./components/IntroLoader";
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
 import Project from "./components/Projects";
+import About from "./components/About";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -43,7 +44,7 @@ export default function App() {
       {/* <NavBar isScrolled={isScrolled} /> */}
       <Hero isScrolled={isScrolled} introDone={introDone}/>
       <Project />
-
+      <About />
     </main>
     </>
   );
