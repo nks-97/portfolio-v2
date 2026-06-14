@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --color-bg: #faf8f0;
   --color-bg-soft: #ffffff;
@@ -43,9 +44,5 @@ body {
 
 .app-bg {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 20% 0%, var(--color-accent-soft), transparent 32%),
-    radial-gradient(circle at 85% 20%, rgba(107, 114, 128, 0.1), transparent 30%),
-    radial-gradient(circle at 50% 115%, rgba(23, 32, 25, 0.07), transparent 38%),
-    linear-gradient(180deg, var(--color-bg-soft), var(--color-bg));
+  background-color: var(--color-bg);;
 }

@@ -1,25 +1,27 @@
 import { AnimatePresence } from "framer-motion";
-import Hero from "./components/Hero";
-import NavBar from "./components/NavBar";
 import IntroLoader from "./components/IntroLoader";
+import NavBar from "./components/NavBar";
+import Hero from "./components/Hero";
+import Project from "./components/Projects";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState();
-  const [showIntro, setShowIntro] = useState(true)
+  const [showIntro, setShowIntro] = useState(true);
+  const [introDone, setIntroDone] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(()=> {
       setShowIntro(false)
-    }, 1500)
+    }, 2500)
 
     return ()=> clearTimeout(timer)
   }, [])
 
   useEffect(() => {
     function handleScroll() {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 10);
     }
 
     window.addEventListener("scroll", handleScroll);
@@ -29,28 +31,27 @@ export default function App() {
 
   return (
     <>
-    <AnimatePresence mode='wait'>
+    <AnimatePresence 
+      mode='wait'
+      onExitComplete={()=>setIntroDone(true)}
+    >
       {showIntro && <IntroLoader />}
     </AnimatePresence>
 
-    <main className="app-bg min-h-screen overflow-x-hidden text-[var(--color-text)] transition-colors duration-300"
+    <main className="app-bg min-h-screen text-[var(--color-text)] transition-colors duration-300">
+    {/* <main className=""> */}
+      {/* <NavBar isScrolled={isScrolled} /> */}
+      <Hero isScrolled={isScrolled} introDone={introDone}/>
+      <Project />
 
-    >
-      <NavBar isScrolled={isScrolled} />
-      <Hero isScrolled={isScrolled} />
-      <div className="w-full min-h-dvh">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore
-        laboriosam cum iste consequuntur aliquam quaerat, ducimus architecto
-        quia laudantium unde culpa voluptates nisi, autem saepe. Architecto
-        expedita ea natus aliquid. Lorem ipsum dolor sit, amet consectetur
-        adipisicing elit. Tempore laboriosam cum iste consequuntur aliquam
-        quaerat, ducimus architecto quia laudantium unde culpa voluptates nisi,
-        autem saepe. Architecto expedita ea natus aliquid. Lorem ipsum dolor
-        sit, amet consectetur adipisicing elit. Tempore laboriosam cum iste
-        consequuntur aliquam quaerat, ducimus architecto quia laudantium unde
-        culpa voluptates nisi, autem saepe. Architecto expedita ea natus
-        aliquid.
-      </div>
+    </main>
+    </>
+  );
+}
+
+
+
+
 
       {/* <div className="fixed bottom-4 left-4 z-[9999] rounded bg-black px-3 py-1 text-white text-sm">
   <span className="sm:hidden">base</span>
@@ -60,7 +61,3 @@ export default function App() {
   <span className="hidden xl:inline 2xl:hidden">xl</span>
   <span className="hidden 2xl:inline">2xl</span>
 </div> */}
-    </main>
-    </>
-  );
-}
