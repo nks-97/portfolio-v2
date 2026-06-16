@@ -41,7 +41,7 @@ export default function Hero({ isScrolled, introDone }) {
 
   return (
     <>
-      <section className="w-full h-[200vh]" ref={sectionRef}>
+      <section className="w-full h-[190vh]" ref={sectionRef}>
         <div className="sticky top-0 h-screen">
           <motion.div
             className="overflow-hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
